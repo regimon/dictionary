@@ -1,0 +1,37 @@
+<h1>Listing words</h1>
+<%for char in 'A'..'Z'%>
+
+<%=link_to char,"/words/get_letter?char=#{char}"%>
+<%end%>
+
+<h3>Enter keyword</h3>
+<form action ="/words/search" method="post">
+<input name = "key" type="input" />
+<input value="Send" type="submit"/>
+</form> 
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Word</th>
+      <th>Wordtype</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @words.each do |word| %>
+      <tr>
+        <td><%= word.word %></td>
+        <td><%= word.wordtype %></td>
+        <td><%= word.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
